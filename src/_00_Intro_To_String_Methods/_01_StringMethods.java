@@ -34,13 +34,31 @@ public class _01_StringMethods {
 
     // Given Strings s1 and s2, return the longer String
     public static String longerString(String s1, String s2) {
-        return null;
+        if (s1.length() > s2.length())
+        {
+        	return s1;
+        }
+        if (s1.length() < s2.length())
+        {
+        	return s2;
+        }
+        else
+        {
+        	return "equal";
+        }
     }
 
     // If String s contains the word "underscores", change all of the spaces
     // to underscores
     public static String formatSpaces(String s) {
-        return null;
+    	if (s.contains("underscores"))
+    	{
+    		return s.replace(" ", "_");
+    	}
+    	else
+    	{
+    		return s;
+    	}
     }
 
     // Return the name of the person whose LAST name would appear first if they
@@ -48,12 +66,44 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
-        return null;
+    	String[] fullName1 = s1.trim().split(" ");
+        String[] fullName2 = s2.trim().split(" ");
+        String[] fullName3 = s3.trim().split(" ");
+        if (fullName1[1].compareToIgnoreCase(fullName2[1]) < 0)
+        {
+        	if (fullName1[1].compareToIgnoreCase(fullName3[1]) < 0)
+        	{
+        		return fullName1[0] + " " + fullName1[1];
+        	}
+        	else
+        	{
+        		return fullName3[0] + " " + fullName3[1];
+        	}
+        }
+        else
+        {
+        	if (fullName2[1].compareToIgnoreCase(fullName3[1]) < 0)
+        	{
+        		return fullName2[0] + " " + fullName2[1];
+        	}
+        	else
+        	{
+        		return fullName3[0] + " " + fullName3[1];
+        	}
+        }
     }
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-        return 0;
+    	int sum = 0;
+    	for (int i = 0; i < s.length(); i++)
+    	{
+    		if (Character.isDigit(s.charAt(i)))
+    		{
+    			sum += Character.getNumericValue(s.charAt(i));
+    		}
+    	}
+        return sum;
     }
 
     // Return the number of times String substring appears in String s
