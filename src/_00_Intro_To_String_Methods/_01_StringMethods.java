@@ -108,31 +108,72 @@ public class _01_StringMethods {
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+        int count = 0;
+    	for (int i = 0; i <= s.length() - substring.length(); i++)
+        {
+    		String ss = s.substring(i, i + substring.length());
+        	if (ss.equals(substring))
+        	{
+        		count ++;
+        	}
+        }
+    	return count;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+    	byte[] byteText = s.getBytes();
+        String encrypted = Utilities.encrypt(byteText, (byte) key);
+    	return encrypted;
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+    	String plainText = Utilities.decrypt(s, (byte)key);
+        return plainText;
     }
 
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
+        String[] individualWords = s.split(" ");
+        int count = 0;
+        for (int i = 0; i < individualWords.length; i++)
+        {
+        	String _s = individualWords[i];
+        	if (_s.length() < substring.length())
+        	{
+        		continue;
+        	}
+        	String endSubstring = _s.substring(_s.length() - substring.length(), _s.length());
+        	if (endSubstring.equals(substring))
+        	{
+        		count++;
+        	}
+        }
+    	return count;
     }
 
     // Given String s, return the number of characters between the first
     // occurrence of String substring and the final occurrence
     // You can assume that substring will appear at least twice
     public static int distance(String s, String substring) {
-        return 0;
+        int start = -1;
+        int end = 0;
+    	for (int i = 0; i <= s.length() - substring.length(); i++)
+        {
+        	String ss = s.substring(i, i + substring.length());
+            if (ss.equals(substring))
+            {
+            	end = i;
+            	if (start == -1)
+            	{
+        			start = i + substring.length();
+        		}
+        	}
+        }
+    	return end - start;
     }
 
     // Return true if String s is a palindrome
